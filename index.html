@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Prompt Vault · آرشیو پویا</title>
     <meta name="description" content="آرشیو پویای پرامپت‌ها، ابزارهای رایگان AI و ترفندهای روز">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,9 +20,11 @@
             --emerald: #3d7d5f;
             --teal: #5a9aa8;
             --radius: 16px;
+            --font-base: 1rem;
         }
         * {
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         html {
             font-size: 17px;
@@ -30,16 +32,21 @@
         }
         body {
             margin: 0;
-            background: radial-gradient(ellipse at 20% -10%, #241d13 0%, transparent 55%),
+            background:
+                radial-gradient(ellipse at 20% -10%, #241d13 0%, transparent 55%),
                 radial-gradient(ellipse at 100% 0%, #16241d 0%, transparent 45%),
                 var(--bg);
             color: var(--cream);
             font-family: 'Vazirmatn', sans-serif;
-            line-height: 1.8;
+            line-height: 1.85;
             min-height: 100vh;
         }
         .mono {
             font-family: 'JetBrains Mono', monospace;
+        }
+        img {
+            max-width: 100%;
+            display: block;
         }
         a {
             color: var(--amber);
@@ -47,6 +54,10 @@
         }
         a:hover {
             text-decoration: underline;
+        }
+        ::selection {
+            background: var(--amber);
+            color: #1a1409;
         }
         .sr-only {
             position: absolute;
@@ -57,10 +68,6 @@
             overflow: hidden;
             clip: rect(0, 0, 0, 0);
             border: 0;
-        }
-        ::selection {
-            background: var(--amber);
-            color: #1a1409;
         }
 
         /* ===== هدر ===== */
@@ -89,6 +96,7 @@
             width: 38px;
             height: 38px;
             border-radius: 9px;
+            flex: none;
             background: linear-gradient(135deg, var(--amber), #8a5a22);
             display: flex;
             align-items: center;
@@ -97,7 +105,6 @@
             font-weight: 700;
             color: #1a1409;
             font-size: 16px;
-            flex-shrink: 0;
         }
         h1 {
             font-size: 1.15rem;
@@ -107,6 +114,7 @@
         .subtitle {
             font-size: .72rem;
             color: var(--muted);
+            margin-top: 2px;
         }
         .top-actions {
             display: flex;
@@ -118,7 +126,7 @@
             background: var(--amber);
             color: #1a1409;
             border: none;
-            padding: 5px 12px;
+            padding: 5px 15px;
             border-radius: 999px;
             font-family: 'Vazirmatn';
             font-weight: 700;
@@ -195,7 +203,7 @@
         main {
             max-width: 960px;
             margin: 0 auto;
-            padding: 20px 14px 60px;
+            padding: 20px 14px 90px;
         }
         section {
             margin-bottom: 40px;
@@ -228,12 +236,7 @@
             margin: -6px 0 16px;
         }
 
-        /* کارت‌ها */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-        }
+        /* ===== Headlines ===== */
         .headlines {
             display: grid;
             gap: 10px;
@@ -262,6 +265,12 @@
             color: var(--muted);
         }
 
+        /* ===== کارت‌ها ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
         .card {
             background: var(--card);
             border: 1px solid var(--line);
@@ -277,9 +286,10 @@
         }
         .card-img {
             width: 100%;
-            height: 200px;
+            height: 210px;
             object-fit: cover;
             background: #000;
+            display: block;
         }
         .card-body {
             padding: 16px 17px 17px;
@@ -290,6 +300,7 @@
         .card-body h3 {
             font-size: 1.05rem;
             margin: 0 0 6px;
+            font-weight: 700;
         }
         .card-body p {
             font-size: .88rem;
@@ -351,7 +362,7 @@
             color: #eafff3;
         }
 
-        /* کارت‌های ابزار */
+        /* ===== کارت‌های ابزار ===== */
         .tool-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -364,14 +375,19 @@
             padding: 16px 17px;
             display: flex;
             flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
         }
         .tool-card .tname {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
             margin-bottom: 7px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
         .tool-card .tname strong {
             font-size: 1.02rem;
@@ -430,7 +446,7 @@
             color: var(--cream);
         }
 
-        /* اصول */
+        /* ===== اصول ===== */
         .principles {
             display: grid;
             gap: 11px;
@@ -477,27 +493,62 @@
             font-size: .88rem;
             color: #eccbbc;
         }
+        .warn b {
+            color: #f3ddd0;
+        }
+
+        .alt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 13px;
+        }
+        .alt-card {
+            background: var(--bg-soft);
+            border: 1px dashed var(--line);
+            border-radius: 14px;
+            padding: 16px;
+        }
+        .alt-card h4 {
+            margin: 0 0 6px;
+            font-size: .96rem;
+            color: var(--amber);
+        }
+        .alt-card p {
+            margin: 0;
+            font-size: .85rem;
+            color: var(--muted);
+        }
+
         .hidden {
             display: none !important;
         }
 
+        /* ===== فوتر ===== */
         footer {
             text-align: center;
-            padding: 28px 16px 40px;
+            padding: 28px 16px 46px;
             color: var(--muted);
             font-size: .78rem;
             font-family: 'JetBrains Mono', monospace;
+            line-height: 1.9;
             border-top: 1px solid var(--line);
             margin-top: 30px;
         }
 
+        /* ===== ریسپانسیو ===== */
         @media (max-width: 560px) {
+            html {
+                font-size: 16.5px;
+            }
             .grid,
             .tool-grid {
                 grid-template-columns: 1fr;
             }
             .card-img {
-                height: 180px;
+                height: 190px;
+            }
+            header {
+                padding: 12px 12px;
             }
         }
     </style>
@@ -537,60 +588,76 @@
     </header>
 
     <main>
-        <!-- تیترها -->
+        <!-- ===== تیترها ===== -->
         <section data-section="headlines">
             <div class="section-head"><span class="tag mono">امروز</span><h2>تیترهای تازه</h2></div>
             <div class="headlines" id="headlinesList"></div>
         </section>
 
-        <!-- ترفندها -->
+        <!-- ===== ترفندها ===== -->
         <section data-section="tips">
             <div class="section-head"><span class="tag mono">TRICKS</span><h2>ترفندهای روز</h2></div>
             <p class="section-desc">ترفندهای جدید و کمتر شناخته‌شده برای افزایش کیفیت و سرعت کار با AI</p>
             <div class="grid" id="tipsGrid"></div>
         </section>
 
-        <!-- سبک‌های تصویر -->
+        <!-- ===== سبک‌های تصویر ===== -->
         <section data-section="image">
             <div class="section-head"><span class="tag mono">IMAGE</span><h2>بانک سبک‌های تصویر</h2></div>
+            <p class="section-desc">هر کارت یک پیش‌نمایش واقعی از حس‌وحال سبک + پرامپت پایه‌ی آماده‌ی کپی.</p>
             <div class="grid" id="imageGrid"></div>
         </section>
 
-        <!-- تکنیک‌های ویدیو -->
+        <!-- ===== تکنیک‌های ویدیو ===== -->
         <section data-section="video">
             <div class="section-head"><span class="tag mono">VIDEO</span><h2>تکنیک‌های ویدیو</h2></div>
+            <p class="section-desc">تکنیک‌های ثبات کاراکتر، دوربین و رنگ برای Nano Banana Pro / Veo / Seedance / Higgsfield.</p>
             <div class="grid" id="videoGrid"></div>
         </section>
 
-        <!-- ابزارها -->
+        <!-- ===== ابزارهای تصویر ===== -->
         <section data-section="tool-image">
             <div class="section-head"><span class="tag mono">FREE·IMG</span><h2>ابزارهای رایگان تصویرساز</h2></div>
             <div class="tool-grid" id="toolImageGrid"></div>
         </section>
+
+        <!-- ===== ابزارهای ویدیو ===== -->
         <section data-section="tool-video">
             <div class="section-head"><span class="tag mono">FREE·VID</span><h2>ابزارهای رایگان ویدیوساز</h2></div>
             <div class="tool-grid" id="toolVideoGrid"></div>
         </section>
+
+        <!-- ===== چت‌بات و API ===== -->
         <section data-section="tool-chat">
             <div class="section-head"><span class="tag mono">FREE·API</span><h2>چت‌بات و APIهای رایگان</h2></div>
             <div class="tool-grid" id="toolChatGrid"></div>
         </section>
 
-        <!-- جوامع -->
+        <!-- ===== جوامع ===== -->
         <section data-section="community">
             <div class="section-head"><span class="tag mono">SOURCES</span><h2>جوامع و منابع تخصصی</h2></div>
             <div class="tool-grid" id="communityGrid"></div>
         </section>
 
-        <!-- اصول -->
+        <!-- ===== اصول ===== -->
         <section data-section="principle">
             <div class="section-head"><span class="tag mono">RULES</span><h2>اصول پرامپت‌نویسی</h2></div>
             <div class="principles" id="principlesList"></div>
         </section>
 
-        <!-- هشدار -->
+        <!-- ===== هشدار ===== -->
         <section>
             <div class="warn"><b>⚠️ هشدار امنیتی:</b> از سایت‌های واسطه با کلیدهای لو رفته خودداری کنید. فقط ابزارهای رسمی معرفی شده‌اند.</div>
+        </section>
+
+        <!-- ===== فرمت‌های جایگزین ===== -->
+        <section>
+            <div class="section-head"><h2>فرمت‌های جایگزین پیشنهادی</h2></div>
+            <div class="alt-grid">
+                <div class="alt-card"><h4>📊 Google Sheet زنده</h4><p>فیلتر و رنگ‌بندی خودکار برای پیگیری روزانه‌ی مصرف کردیت.</p></div>
+                <div class="alt-card"><h4>🗂️ Notion Database</h4><p>هر پرامپت یک ردیف با تگ؛ قابل اشتراک با تیم سالن.</p></div>
+                <div class="alt-card"><h4>📱 کانال تلگرام شخصی</h4><p>آرشیو تاریخی خودکار و قابل جست‌وجو برای پرامپت‌های تازه.</p></div>
+            </div>
         </section>
     </main>
 
@@ -603,10 +670,10 @@
         (function() {
             'use strict';
 
-            // ========== آدرس داده‌های خارجی (JSON) ==========
-            const DATA_URL = 'data.json'; // فایل JSON در همان پوشه
+            // ===== آدرس داده‌ها =====
+            const DATA_URL = 'Data.json'; // توجه: حروف بزرگ D
 
-            // ========== داده‌های پیش‌فرض (در صورت عدم دریافت) ==========
+            // ===== داده‌های پیش‌فرض (در صورت عدم دریافت) =====
             const FALLBACK_DATA = {
                 headlines: [
                     { d: "۱۵ تیر ۱۴۰۵", t: "Meta Muse Image/Video رایگان شد", x: "قابل استفاده در اپ Meta AI، اینستاگرام و واتساپ" },
@@ -617,4 +684,356 @@
                     { t: "تکنیک Hex-Lock برای ثبات رنگ", d: "تکرار کد هگز رنگ در هر فریم برای جلوگیری از تغییر رنگ", link: "#" }
                 ],
                 image: [
-                    { t: "Toy-ification", sw: "toyfigurine", d: "تبدیل به فیگور اکشن", kw: ["فیگور", "بلیستر"], p: "Transform into a collectible 1/6 scale action figure inside blister packaging: glossy plastic sheen, cardboard backer card with logo, plastic window, studio product-photo li
+                    { t: "Toy-ification (فیگور اکشن)", sw: "toyfigurine", d: "تبدیل به فیگور اکشن داخل بسته‌بندی بلیستر", kw: ["فیگور", "بلیستر", "ترند"], p: "Transform into a collectible 1/6 scale action figure inside blister packaging: glossy plastic sheen, cardboard backer card with logo, plastic window, studio product-photo lighting." },
+                    { t: "Neon Contour", sw: "neoncontour", d: "خطوط نئونی روی پنل تیره", kw: ["نئون", "تابلو"], p: "Redraw every contour as a bent neon-tube sign on a dark panel: glowing outlines, mounting brackets, transformer glow, colored light spill. No text." }
+                ],
+                video: [
+                    { t: "Bullet-Time", sw: "bullettime", d: "لحظه یخ زده با دوربین اوربیت", kw: ["اوربیت", "آهسته"], p: "Subject frozen mid-action, camera orbits 110-140° at constant height, foreground softly blurred, background sharp, painterly cinematic style not photoreal." }
+                ],
+                tools: {
+                    image: [
+                        { n: "Google AI Studio", q: "~۵۰۰ عکس/روز", d: "Gemini 2.5 Flash Image، بدون کارت بانکی.", badge: "free", url: "https://aistudio.google.com/" },
+                        { n: "Leonardo AI", q: "۱۵۰ توکن/روز", d: "بدون واترمارک، دسترسی به FLUX/Phoenix.", badge: "free", url: "https://leonardo.ai/" }
+                    ],
+                    video: [
+                        { n: "Kling AI 3.0", q: "۶۶ کردیت/روز (~۶ کلیپ)", d: "بهترین فیزیک/حرکت طبیعی؛ واترمارک دارد.", badge: "free", url: "https://kling.kuaishou.com/" }
+                    ],
+                    chat: [
+                        { n: "Gemini API", q: "~۱۵۰۰ درخواست/روز", d: "تنها API واقعاً همیشگی رایگان بدون کارت.", badge: "free", url: "https://aistudio.google.com/" }
+                    ],
+                    community: [
+                        { n: "Reddit r/StableDiffusion", q: "لحظه‌ای", d: "بحث فنی و ترفندهای تازه هر روز.", badge: "free", url: "https://reddit.com/r/StableDiffusion/" }
+                    ]
+                },
+                principles: [
+                    { h: "صفت انتزاعی رندر نمی‌شه", d: "به‌جای «خیره‌کننده»، نور و جزئیات فیزیکی واقعی توصیف کن." },
+                    { h: "قفل + تغییر + میزان + محدودیت", d: "هر پرامپت باید بگه چی ثابت، چی تغییر، چقدر، و با چه محدودیتی." }
+                ]
+            };
+
+            // ===== کش =====
+            const CACHE_KEY = 'promptVaultData';
+            const CACHE_TIME_KEY = 'promptVaultTime';
+
+            function loadFromCache() {
+                try {
+                    const raw = localStorage.getItem(CACHE_KEY);
+                    if (raw) {
+                        const data = JSON.parse(raw);
+                        const timestamp = parseInt(localStorage.getItem(CACHE_TIME_KEY) || '0');
+                        if (Date.now() - timestamp < 3600000) {
+                            return data;
+                        }
+                    }
+                } catch (_) {}
+                return null;
+            }
+
+            function saveToCache(data) {
+                try {
+                    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+                    localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+                } catch (_) {}
+            }
+
+            // ===== دریافت داده =====
+            async function fetchData(forceRefresh = false) {
+                const updateBtn = document.getElementById('updateBtn');
+                if (updateBtn) {
+                    updateBtn.disabled = true;
+                    updateBtn.textContent = '⏳ در حال دریافت...';
+                }
+
+                try {
+                    if (!forceRefresh) {
+                        const cached = loadFromCache();
+                        if (cached) {
+                            return cached;
+                        }
+                    }
+
+                    const url = DATA_URL + '?v=' + Date.now();
+                    const response = await fetch(url, { cache: 'no-cache' });
+                    if (!response.ok) throw new Error('خطا در دریافت داده');
+                    const data = await response.json();
+                    saveToCache(data);
+                    return data;
+                } catch (error) {
+                    console.warn('خطا در دریافت داده، استفاده از پیش‌فرض:', error);
+                    return FALLBACK_DATA;
+                } finally {
+                    if (updateBtn) {
+                        updateBtn.disabled = false;
+                        updateBtn.textContent = '🔄 بروزرسانی';
+                    }
+                }
+            }
+
+            // ===== رندر =====
+            function renderAll(data) {
+                const now = new Date();
+                const dateStr = now.toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
+                const pill = document.getElementById('updatePill');
+                if (pill) pill.textContent = 'آخرین بروزرسانی: ' + dateStr;
+                const footerDate = document.getElementById('footerDate');
+                if (footerDate) footerDate.textContent = dateStr;
+
+                renderHeadlines(data.headlines || []);
+                renderTips(data.tips || []);
+                renderStyleCards(data.image || [], 'imageGrid', 'image');
+                renderStyleCards(data.video || [], 'videoGrid', 'video');
+                renderToolCards(data.tools?.image || [], 'toolImageGrid', 'tool-image');
+                renderToolCards(data.tools?.video || [], 'toolVideoGrid', 'tool-video');
+                renderToolCards(data.tools?.chat || [], 'toolChatGrid', 'tool-chat');
+                renderToolCards(data.tools?.community || [], 'communityGrid', 'community');
+                renderPrinciples(data.principles || []);
+
+                applyFilters(filter, query);
+            }
+
+            function renderHeadlines(headlines) {
+                const list = document.getElementById('headlinesList');
+                if (!list) return;
+                list.innerHTML = '';
+                headlines.forEach(h => {
+                    const row = document.createElement('div');
+                    row.className = 'headline';
+                    row.dataset.cat = 'headlines';
+                    row.dataset.search = (h.t + ' ' + h.x).toLowerCase();
+                    row.innerHTML = `
+                        <div class="hdate mono">${h.d}</div>
+                        <h4>${h.t}</h4>
+                        <p>${h.x}</p>
+                    `;
+                    list.appendChild(row);
+                });
+            }
+
+            function renderTips(tips) {
+                const grid = document.getElementById('tipsGrid');
+                if (!grid) return;
+                grid.innerHTML = '';
+                tips.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.dataset.cat = 'tips';
+                    card.dataset.search = (item.t + ' ' + item.d).toLowerCase();
+                    card.innerHTML = `
+                        <div class="card-body">
+                            <h3>💡 ${item.t}</h3>
+                            <p>${item.d}</p>
+                            ${item.link && item.link !== '#' ? `<a href="${item.link}" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;color:var(--teal);">مشاهده جزئیات →</a>` : ''}
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            function renderStyleCards(items, containerId, cat) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                container.innerHTML = '';
+                items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.dataset.cat = cat;
+                    card.dataset.search = (item.t + ' ' + item.d + ' ' + (item.kw || []).join(' ')).toLowerCase();
+
+                    const img = document.createElement('img');
+                    img.className = 'card-img';
+                    img.src = `https://picsum.photos/seed/${item.sw || 'default'}/400/300`;
+                    img.alt = item.t;
+                    img.loading = 'lazy';
+                    card.appendChild(img);
+
+                    const body = document.createElement('div');
+                    body.className = 'card-body';
+                    body.innerHTML = `
+                        <h3>${item.t}</h3>
+                        <p>${item.d}</p>
+                        <div class="keywords">${(item.kw || []).map(k => `<span class="kw">${k}</span>`).join('')}</div>
+                        <div class="prompt-box"><textarea readonly rows="3">${item.p || ''}</textarea></div>
+                        <button class="copy-btn" aria-label="کپی پرامپت">📋 کپی پرامپت</button>
+                    `;
+                    card.appendChild(body);
+
+                    const btn = body.querySelector('.copy-btn');
+                    const ta = body.querySelector('textarea');
+                    btn.addEventListener('click', () => copyPrompt(btn, ta));
+
+                    container.appendChild(card);
+                });
+            }
+
+            function renderToolCards(items, containerId, cat) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                container.innerHTML = '';
+                items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'tool-card';
+                    card.dataset.cat = cat;
+                    card.dataset.search = (item.n + ' ' + item.d + ' ' + item.q).toLowerCase();
+
+                    let badgeClass = 'free';
+                    let badgeText = 'رایگان';
+                    if (item.badge === 'trial') { badgeClass = 'trial';
+                        badgeText = 'ترایال'; } else if (item.badge === 'paid') { badgeClass = 'paid';
+                        badgeText = 'پرداختی'; }
+
+                    card.innerHTML = `
+                        <div class="tname">
+                            <strong>${item.n}</strong>
+                            <span class="badge ${badgeClass}">${badgeText}</span>
+                        </div>
+                        <div class="quota mono">${item.q}</div>
+                        <p>${item.d}</p>
+                        <div class="tool-link">
+                            ${item.url ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer">🔗 بازدید سایت</a>` : ''}
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            function renderPrinciples(principles) {
+                const list = document.getElementById('principlesList');
+                if (!list) return;
+                list.innerHTML = '';
+                principles.forEach((p, i) => {
+                    const row = document.createElement('div');
+                    row.className = 'principle';
+                    row.dataset.cat = 'principle';
+                    row.dataset.search = (p.h + ' ' + p.d).toLowerCase();
+                    row.innerHTML = `
+                        <div class="num mono">${String(i+1).padStart(2,'0')}</div>
+                        <div><h4>${p.h}</h4><p>${p.d}</p></div>
+                    `;
+                    list.appendChild(row);
+                });
+            }
+
+            // ===== کپی پرامپت =====
+            function copyPrompt(btn, ta) {
+                const text = ta.value;
+                const done = () => {
+                    const old = btn.textContent;
+                    btn.textContent = '✓ کپی شد';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = old;
+                        btn.classList.remove('copied');
+                    }, 1600);
+                };
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(ta, done));
+                } else {
+                    fallbackCopy(ta, done);
+                }
+            }
+
+            function fallbackCopy(ta, done) {
+                try {
+                    ta.focus();
+                    ta.select();
+                    ta.setSelectionRange(0, ta.value.length);
+                    if (document.execCommand('copy')) done();
+                    else ta.select();
+                } catch (_) { ta.select(); }
+            }
+
+            // ===== فیلتر و جستجو =====
+            let filter = 'all';
+            let query = '';
+
+            function applyFilters(filterVal, queryVal) {
+                filter = filterVal;
+                query = queryVal;
+                const q = query.trim().toLowerCase();
+                const sections = document.querySelectorAll('section[data-section]');
+                const allItems = document.querySelectorAll('[data-search]');
+
+                sections.forEach(s => {
+                    const sectionCat = s.dataset.section;
+                    s.classList.toggle('hidden', filter !== 'all' && sectionCat !== filter);
+                });
+
+                allItems.forEach(node => {
+                    const section = node.closest('section[data-section]');
+                    if (section && section.classList.contains('hidden')) {
+                        node.style.display = 'none';
+                        return;
+                    }
+                    const match = q === '' || node.dataset.search.includes(q);
+                    node.style.display = match ? '' : 'none';
+                });
+            }
+
+            // ===== رویدادها =====
+            function initEvents() {
+                // چیپ‌ها
+                const chips = document.querySelectorAll('.chip');
+                chips.forEach(chip => {
+                    chip.addEventListener('click', function() {
+                        chips.forEach(c => { c.classList.remove('active');
+                            c.setAttribute('aria-selected', 'false'); });
+                        this.classList.add('active');
+                        this.setAttribute('aria-selected', 'true');
+                        const f = this.dataset.filter;
+                        const q = document.getElementById('search')?.value || '';
+                        applyFilters(f, q);
+                    });
+                });
+
+                // جستجو
+                const searchInput = document.getElementById('search');
+                if (searchInput) {
+                    searchInput.addEventListener('input', function() {
+                        const q = this.value;
+                        const activeChip = document.querySelector('.chip.active');
+                        const f = activeChip ? activeChip.dataset.filter : 'all';
+                        applyFilters(f, q);
+                    });
+                }
+
+                // دکمه بروزرسانی
+                const updateBtn = document.getElementById('updateBtn');
+                if (updateBtn) {
+                    updateBtn.addEventListener('click', async function() {
+                        const data = await fetchData(true);
+                        renderAll(data);
+                    });
+                }
+
+                // لینک گیت‌هاب
+                const githubLink = document.getElementById('githubLink');
+                if (githubLink) {
+                    githubLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const username = prompt('نام کاربری GitHub خود را وارد کنید:');
+                        if (username) {
+                            this.href = `https://github.com/${username}/Prompt-Vault`;
+                            this.textContent = `github.com/${username}/Prompt-Vault`;
+                            window.open(this.href, '_blank');
+                        }
+                    });
+                }
+            }
+
+            // ===== راه‌اندازی =====
+            async function init() {
+                const data = await fetchData(false);
+                renderAll(data);
+                initEvents();
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+
+        })();
+    </script>
+</body>
+</html>
