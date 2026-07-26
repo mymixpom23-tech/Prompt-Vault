@@ -1,0 +1,50 @@
+{
+  "headlines": [
+    { "d": "۱۵ تیر ۱۴۰۵", "t": "Meta Muse Image/Video رایگان شد", "x": "قابل استفاده در اپ Meta AI، اینستاگرام و واتساپ" },
+    { "d": "۱۴ تیر ۱۴۰۵", "t": "Seedance 2.5 با ویدیوی ۳۰ ثانیه‌ای", "x": "قابلیت ۵۰ رفرنس همزمان و خروجی ۴K" },
+    { "d": "۱۳ تیر ۱۴۰۵", "t": "Gemini Omni Flash معرفی شد", "x": "ویرایش مکالمه‌ای ویدیو تا ۱۰ ثانیه" }
+  ],
+  "tips": [
+    { "t": "استفاده از کلمات منفی برای جلوگیری از دریفت", "d": "اضافه کردن 'NOT anime, NOT photoreal' به انتهای پرامپت", "link": "https://www.reddit.com/r/StableDiffusion/comments/1abcdef/" },
+    { "t": "تکنیک Hex-Lock برای ثبات رنگ", "d": "تکرار کد هگز رنگ در هر فریم برای جلوگیری از تغییر رنگ", "link": "#" },
+    { "t": "پرامپت‌نویسی مرحله‌ای", "d": "به جای پرامپت بلند، تغییرات را در چند مرحله کوتاه انجام دهید", "link": "#" }
+  ],
+  "image": [
+    { "t": "Toy-ification (فیگور اکشن)", "sw": "toyfigurine", "d": "تبدیل به فیگور اکشن داخل بسته‌بندی بلیستر", "kw": ["فیگور", "بلیستر", "ترند"], "p": "Transform into a collectible 1/6 scale action figure inside blister packaging: glossy plastic sheen, cardboard backer card with logo, plastic window, studio product-photo lighting." },
+    { "t": "Anti-AI Film Grain", "sw": "filmgrain", "d": "استایل عمداً خام و دانه‌دار", "kw": ["grain", "طبیعی"], "p": "Reduce saturation slightly, add authentic film grain, soften contrast, subtle vignette, imperfect natural skin — avoid the overly smooth AI look." },
+    { "t": "Neon Contour", "sw": "neoncontour", "d": "خطوط نئونی روی پنل تیره", "kw": ["نئون", "تابلو"], "p": "Redraw every contour as a bent neon-tube sign on a dark panel: glowing outlines, mounting brackets, transformer glow, colored light spill. No text." }
+  ],
+  "video": [
+    { "t": "Bullet-Time", "sw": "bullettime", "d": "لحظه یخ زده با دوربین اوربیت", "kw": ["اوربیت", "آهسته"], "p": "Subject frozen mid-action, camera orbits 110-140° at constant height, foreground softly blurred, background sharp, painterly cinematic style not photoreal." },
+    { "t": "Character Replacement", "sw": "toyfigurine", "d": "جایگزینی کاراکتر در ویدیوی رفرنس", "kw": ["ثبات", "کاراکتر"], "p": "Replace only the character in this reference clip; preserve background, camera path and lighting exactly — do not reconstruct the environment." }
+  ],
+  "tools": {
+    "image": [
+      { "n": "Google AI Studio", "q": "~۵۰۰ عکس/روز", "d": "Gemini 2.5 Flash Image، بدون کارت بانکی.", "badge": "free", "url": "https://aistudio.google.com/" },
+      { "n": "Leonardo AI", "q": "۱۵۰ توکن/روز", "d": "بدون واترمارک، دسترسی به FLUX/Phoenix.", "badge": "free", "url": "https://leonardo.ai/" },
+      { "n": "Meta AI (Muse Image)", "q": "رایگان نامحدود", "d": "روی اپ Meta AI، اینستاگرام استوری، واتساپ.", "badge": "free", "url": "https://www.meta.ai/" }
+    ],
+    "video": [
+      { "n": "Kling AI 3.0", "q": "۶۶ کردیت/روز (~۶ کلیپ)", "d": "بهترین فیزیک/حرکت طبیعی؛ واترمارک دارد.", "badge": "free", "url": "https://kling.kuaishou.com/" },
+      { "n": "PixVerse", "q": "۹۰ کردیت/روز", "d": "بدون واترمارک — گزینه‌ی تمیز نادر.", "badge": "free", "url": "https://pixverse.ai/" },
+      { "n": "Seedance 2.5", "q": "در حال عرضه", "d": "ویدیوی بومی ۳۰ ثانیه، ۴K، ۵۰ رفرنس همزمان.", "badge": "trial", "url": "https://www.seedance.ai/" }
+    ],
+    "chat": [
+      { "n": "Gemini API", "q": "~۱۵۰۰ درخواست/روز", "d": "تنها API واقعاً همیشگی رایگان بدون کارت.", "badge": "free", "url": "https://aistudio.google.com/" },
+      { "n": "Claude (رایگان)", "q": "محدودیت پیام روزانه", "d": "چت رایگان همیشگی؛ API فقط ۵$ اعتبار انقضادار.", "badge": "free", "url": "https://claude.ai/" }
+    ],
+    "community": [
+      { "n": "Reddit r/StableDiffusion", "q": "لحظه‌ای", "d": "بحث فنی و ترفندهای تازه هر روز.", "badge": "free", "url": "https://reddit.com/r/StableDiffusion/" },
+      { "n": "Sifu Yik (Substack)", "q": "آپدیت روزانه", "d": "پرامپت‌های شماره‌گذاری‌شده‌ی ویدیو/عکس، رایگان.", "badge": "free", "url": "https://sifuyik.substack.com/" }
+    ]
+  },
+  "principles": [
+    { "h": "صفت انتزاعی رندر نمی‌شه", "d": "به‌جای «خیره‌کننده»، نور و جزئیات فیزیکی واقعی توصیف کن." },
+    { "h": "قفل + تغییر + میزان + محدودیت", "d": "هر پرامپت باید بگه چی ثابت، چی تغییر، چقدر، و با چه محدودیتی." },
+    { "h": "پرامپت باید خودکفا باشه", "d": "فقط دلتای تغییر رو نفرست؛ کل صحنه رو دوباره توصیف کن." },
+    { "h": "حرکت تدریجی یعنی در کل کلیپ", "d": "اگه نگی حرکت باید در ۱۰ ثانیه پخش بشه، مدل در ۲-۳ ثانیه‌ی اول فشرده‌ش می‌کنه." },
+    { "h": "یک تغییر در هر مرحله", "d": "ویرایش‌های ترکیبی نادیده گرفته می‌شن؛ پشت‌سرهم و مستقل انجامش بده." },
+    { "h": "اول پرتره‌ی تک‌نفره", "d": "قبل از صحنه‌ی چندکاراکتری، یک likeness study تنها بساز." },
+    { "h": "محدودیت منفی صریح بنویس", "d": "«نه انیمه، نه فتوریل» در پایان پرامپت از دریفت سبک جلوگیری می‌کنه." }
+  ]
+}
